@@ -13,16 +13,14 @@ use Illuminate\Support\Facades\Log;
 
 class MedicationController extends Controller
 {
-    protected $medicationService;
 
     /**
      * Create a new MedicationController instance.
      *
      * @param MedicationService $medicationService
      */
-    public function __construct(MedicationService $medicationService)
+    public function __construct(protected MedicationService $medicationService)
     {
-        $this->medicationService = $medicationService;
     }
 
     /**
