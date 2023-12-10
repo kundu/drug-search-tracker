@@ -23,7 +23,6 @@ class MedicationController extends Controller
     public function __construct(MedicationService $medicationService)
     {
         $this->medicationService = $medicationService;
-        $this->middleware('auth:sanctum');
     }
 
     /**
