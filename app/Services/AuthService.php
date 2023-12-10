@@ -5,12 +5,16 @@ namespace App\Services;
 use App\Exceptions\InvalidCredentialsException;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 class AuthService
 {
     /**
-     * Register a new user and return an API token.
+     * Handles the registration of a new user and returns the newly created user object.
+     *
+     * @param string $name The name of the user.
+     * @param string $email The email address of the user.
+     * @param string $password The password for the user account.
+     * @return User The newly created user instance.
      */
     public function register(string $name, string $email, string $password): User
     {
@@ -24,7 +28,12 @@ class AuthService
     }
 
     /**
-     * Authenticate a user and return an API token.
+     * Authenticates a user based on email and password.
+     *
+     * @param string $email The email address of the user.
+     * @param string $password The password for the user account.
+     * @return User The authenticated user instance.
+     * @throws InvalidCredentialsException If the credentials are not valid.
      */
     public function login(string $email, string $password): User
     {
@@ -37,7 +46,13 @@ class AuthService
         return $user;
     }
 
-    public function getToken(User $user){
+    /**
+     * Generates and returns an API token for the given user.
+     *
+     * @param User $user The user instance for whom the token is to be created.
+     * @return string The generated plain text API token.
+     */
+    public function getToken(User $user) : string{
         return $user->createToken('auth_token')->plainTextToken;
     }
 }
