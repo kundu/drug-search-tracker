@@ -4,8 +4,9 @@ namespace App\Services;
 
 use App\Exceptions\DrugNotFoundException;
 use App\Models\User;
-use App\Models\Medication; // Ensure you have a Medication model
+use App\Models\Medication;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MedicationService
@@ -18,7 +19,7 @@ class MedicationService
      * @return void
      * @throws DrugNotFoundException If the drug with the specified RXCUI is not found.
      */
-    public function addDrug(User $user, string $rxcui)
+    public function addDrug(User $user, string $rxcui) : void
     {
         $drugData = (new RxNavService())->getAdditionalDrugData($rxcui);
         $drugData = $drugData['rxcuiStatusHistory'];
@@ -62,7 +63,7 @@ class MedicationService
      * @throws AuthorizationException If the medication does not belong to the user.
      * @return void
      */
-    public function deleteDrug(User $user, int $medicationId)
+    public function deleteDrug(User $user, int $medicationId) : void
     {
         $medication = Medication::find($medicationId);
 
@@ -81,7 +82,7 @@ class MedicationService
      * @param User $user
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getUserDrugs(User $user)
+    public function getUserDrugs(User $user) : Collection
     {
         return $user->medications;
     }
