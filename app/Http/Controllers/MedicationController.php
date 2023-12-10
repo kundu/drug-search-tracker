@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\DrugNotFoundException;
-use App\Http\Requests\AddDrugRequest; // You may need to create this request class
+use App\Http\Requests\AddDrugRequest;
 use App\Services\MedicationService;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
