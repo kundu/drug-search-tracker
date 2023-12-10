@@ -56,6 +56,14 @@ To run the project locally:
 php artisan serve
 ```
 
+### **Configuration**
+
+Add the following line to your **.env** file to set the cache duration (in minutes) for RxNav API requests:
+
+```plaintext
+RXNAV_CACHE_DURATION=1
+```
+
 This will start the Laravel development server. You can access the application via **http://localhost:8000** in your browser.
 
 ## **API Documentation**
