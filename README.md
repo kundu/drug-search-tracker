@@ -12,15 +12,14 @@ Follow these steps to install the project:
 *   Composer
 *   A web server like Apache or Nginx
 *   MySQL or another database system
-*   Laravel (version X.X)
 
 ### **Steps**
 
 **Clone the Repository**
 
 ```plaintext
-git clone https://your-repository-url.git
-cd your-repository-directory
+git clone https://github.com/kundu/drug-search-tracker.git
+cd drug-search-tracker
 ```
 
 **Install Dependencies**
